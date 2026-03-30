@@ -17,6 +17,13 @@
   --color-danger: #DC2626;
 }
 
+@font-face {
+  font-family: 'Rand';
+  src: local('Rand Medium'), local('Rand');
+  font-weight: 500;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -25,9 +32,17 @@ body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
-  background: #f9fafb;
+  background: #fff;
 }
 
 #root {
   min-height: 100vh;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
