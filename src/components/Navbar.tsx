@@ -2,12 +2,12 @@ import { Search, Cloud, ArrowUpFromLine, LayoutDashboard } from 'lucide-react';
 
 interface NavbarProps {
   projectName: string;
-  activityCount: number;
+  activityCount?: number;
   onDashboardToggle: () => void;
   dashboardOpen: boolean;
 }
 
-export function Navbar({ projectName, activityCount: _activityCount, onDashboardToggle, dashboardOpen }: NavbarProps) {
+export function Navbar({ projectName, onDashboardToggle, dashboardOpen }: NavbarProps) {
   return (
     <header className="flex items-center justify-between h-14 px-4 border-b border-gray-100 bg-white shrink-0">
       {/* Left */}

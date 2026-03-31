@@ -153,8 +153,6 @@ export function Dashboard({ project, activity, onClose }: DashboardProps) {
   const approved = allBlocks.filter(b => b.approval?.status === 'approved').length;
   const approvalPending = allBlocks.filter(b => b.approval?.status === 'needs_approval').length;
 
-  const _gates = project.items.filter(it => it.kind === 'gate').map(it => it.kind === 'gate' ? it.gate : null!);
-
   // Donut shows mutually exclusive workflow statuses
   const pipelineStages = [
     { label: 'COMPLETED', count: completedBlocks, color: '#4F00C1' },
