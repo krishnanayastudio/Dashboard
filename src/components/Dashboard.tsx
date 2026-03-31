@@ -56,9 +56,9 @@ const cardVariants = {
   hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1, y: 0,
-    transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
   },
-};
+} satisfies import('framer-motion').Variants;
 
 // ─── Animated Counter Hook ───
 
@@ -145,7 +145,7 @@ export function Dashboard({ project, activity, onClose }: DashboardProps) {
 
   // Workflow status (mutually exclusive — sums to totalBlocks)
   const completedBlocks = allBlocks.filter(b => b.approval?.status === 'approved').length;
-  const onHoldBlocks = allBlocks.filter(b => b.approval?.status === 'blocked').length || 1;
+  const onHoldBlocks = allBlocks.filter(b => b.approval?.status === 'none').length || 1;
   const inProgressBlocks = allBlocks.filter(b => b.approval?.status === 'needs_approval').length;
   const todoBlocks = Math.max(totalBlocks - completedBlocks - onHoldBlocks - inProgressBlocks, 0);
 
@@ -153,7 +153,7 @@ export function Dashboard({ project, activity, onClose }: DashboardProps) {
   const approved = allBlocks.filter(b => b.approval?.status === 'approved').length;
   const approvalPending = allBlocks.filter(b => b.approval?.status === 'needs_approval').length;
 
-  const gates = project.items.filter(it => it.kind === 'gate').map(it => it.kind === 'gate' ? it.gate : null!);
+  const _gates = project.items.filter(it => it.kind === 'gate').map(it => it.kind === 'gate' ? it.gate : null!);
 
   // Donut shows mutually exclusive workflow statuses
   const pipelineStages = [
