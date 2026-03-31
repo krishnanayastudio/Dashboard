@@ -10,32 +10,32 @@ interface GateBlockProps {
 
 const statusStyles = {
   passed: {
-    bg: 'bg-gradient-to-br from-emerald-50 to-emerald-100',
-    border: 'border-emerald-300',
-    icon: <CheckCircle2 size={28} className="text-emerald-500" />,
-    text: 'text-emerald-700',
-    sub: 'text-emerald-500',
+    bg: 'bg-gradient-to-br from-green-50 to-green-100',
+    border: 'border-green-300',
+    icon: <CheckCircle2 size={28} className="text-green-500" />,
+    text: 'text-green-500',
+    sub: 'text-green-500',
   },
   active: {
-    bg: 'bg-gradient-to-br from-amber-50 to-amber-100',
-    border: 'border-amber-300',
-    icon: <Shield size={28} className="text-amber-500" />,
-    text: 'text-amber-700',
-    sub: 'text-amber-500',
+    bg: 'bg-gradient-to-br from-orange-50 to-orange-100',
+    border: 'border-orange-300',
+    icon: <Shield size={28} className="text-orange-300" />,
+    text: 'text-gray-800',
+    sub: 'text-orange-300',
   },
   blocked: {
     bg: 'bg-gradient-to-br from-red-50 to-red-100',
-    border: 'border-red-300',
+    border: 'border-red-200',
     icon: <AlertCircle size={28} className="text-red-500" />,
     text: 'text-red-700',
     sub: 'text-red-500',
   },
   locked: {
-    bg: 'bg-gradient-to-br from-grey-050 to-grey-100',
-    border: 'border-grey-200',
-    icon: <Lock size={28} className="text-grey-300" />,
-    text: 'text-grey-400',
-    sub: 'text-grey-300',
+    bg: 'bg-gradient-to-br from-gray-50 to-gray-150',
+    border: 'border-gray-300',
+    icon: <Lock size={28} className="text-gray-400" />,
+    text: 'text-gray-600',
+    sub: 'text-gray-400',
   },
 };
 
@@ -49,7 +49,7 @@ export function GateBlock({ gate, status, isActive, onClick }: GateBlockProps) {
       onClick={onClick}
       className={`relative w-[288px] h-[230px] rounded-3xl border-2 overflow-hidden shrink-0 flex flex-col items-center justify-center gap-3 transition-all text-center
         ${style.bg} ${style.border}
-        ${isActive ? 'ring-2 ring-primary-500/30 shadow-lg scale-[1.02]' : 'hover:shadow-lg'}
+        ${isActive ? 'ring-2 ring-purple-700/30 shadow-lg scale-[1.02]' : 'hover:shadow-lg'}
         ${status === 'locked' ? 'opacity-60 cursor-default' : 'cursor-pointer'}
       `}
     >

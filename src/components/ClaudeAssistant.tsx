@@ -184,7 +184,7 @@ export function ClaudeAssistant({ gate, phaseName }: ClaudeAssistantProps) {
 
   if (!isOpen) {
     return (
-      <div className="px-5 py-3 border-t border-grey-080">
+      <div className="px-5 py-3 border-t border-gray-100">
         <button
           onClick={handleOpen}
           className="flex items-center gap-2.5 w-full px-4 py-3 rounded-2xl bg-[#F9F5EE] hover:bg-[#F3EDE3] border border-[#E8DFD0] transition-all group"
@@ -205,10 +205,10 @@ export function ClaudeAssistant({ gate, phaseName }: ClaudeAssistantProps) {
           </div>
           <div className="flex items-center gap-1">
             {gate.status === 'active' && progress === 100 && (
-              <ThumbsUp size={13} className="text-emerald-500" />
+              <ThumbsUp size={13} className="text-green-500" />
             )}
             {gate.status === 'active' && pending.length > 0 && progress < 50 && (
-              <AlertTriangle size={13} className="text-amber-500" />
+              <AlertTriangle size={13} className="text-orange-300" />
             )}
           </div>
         </button>
@@ -217,7 +217,7 @@ export function ClaudeAssistant({ gate, phaseName }: ClaudeAssistantProps) {
   }
 
   return (
-    <div className="border-t border-grey-080 flex flex-col" style={{ maxHeight: '55%', minHeight: '240px' }}>
+    <div className="border-t border-gray-100 flex flex-col" style={{ maxHeight: '55%', minHeight: '240px' }}>
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-[#F9F5EE] border-b border-[#E8DFD0] shrink-0">
         <div className="flex items-center gap-2">
@@ -240,8 +240,8 @@ export function ClaudeAssistant({ gate, phaseName }: ClaudeAssistantProps) {
           <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-[95%] rounded-2xl px-3.5 py-2.5 text-[13px] leading-relaxed ${
               msg.role === 'user'
-                ? 'bg-primary-500 text-white rounded-br-md'
-                : 'bg-[#F9F5EE] text-grey-700 rounded-bl-md border border-[#E8DFD0]'
+                ? 'bg-purple-700 text-white rounded-br-md'
+                : 'bg-[#F9F5EE] text-gray-900 rounded-bl-md border border-[#E8DFD0]'
             }`}>
               {msg.role === 'assistant' ? (
                 <div className="space-y-1.5">
@@ -259,13 +259,13 @@ export function ClaudeAssistant({ gate, phaseName }: ClaudeAssistantProps) {
                       );
                     }
                     if (line.startsWith('- ')) {
-                      return <p key={i} className="pl-3 text-grey-600">{line}</p>;
+                      return <p key={i} className="pl-3 text-gray-800">{line}</p>;
                     }
                     if (line.startsWith('*') && line.endsWith('*')) {
-                      return <p key={i} className="text-grey-500 italic text-xs">{line.replace(/\*/g, '')}</p>;
+                      return <p key={i} className="text-gray-700 italic text-xs">{line.replace(/\*/g, '')}</p>;
                     }
                     if (line.match(/^\d+\./)) {
-                      return <p key={i} className="pl-2 text-grey-600">{line.replace(/\*\*/g, '')}</p>;
+                      return <p key={i} className="pl-2 text-gray-800">{line.replace(/\*\*/g, '')}</p>;
                     }
                     if (line === '') return <div key={i} className="h-1" />;
                     return <p key={i}>{line.replace(/\*\*/g, '')}</p>;
@@ -330,7 +330,7 @@ export function ClaudeAssistant({ gate, phaseName }: ClaudeAssistantProps) {
       )}
 
       {/* Input */}
-      <div className="flex items-center gap-2 px-3 py-2.5 border-t border-grey-080 bg-white shrink-0">
+      <div className="flex items-center gap-2 px-3 py-2.5 border-t border-gray-100 bg-white shrink-0">
         <input
           ref={inputRef}
           value={input}
@@ -342,7 +342,7 @@ export function ClaudeAssistant({ gate, phaseName }: ClaudeAssistantProps) {
             }
           }}
           placeholder="Ask about this gate..."
-          className="flex-1 h-9 px-3 text-sm bg-grey-050 border border-grey-080 rounded-xl focus:outline-none focus:border-[#E5793B] focus:ring-1 focus:ring-[#E5793B]/20 placeholder:text-grey-300"
+          className="flex-1 h-9 px-3 text-sm bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-[#E5793B] focus:ring-1 focus:ring-[#E5793B]/20 placeholder:text-gray-400"
         />
         <button
           onClick={handleSend}
@@ -350,7 +350,7 @@ export function ClaudeAssistant({ gate, phaseName }: ClaudeAssistantProps) {
           className={`w-9 h-9 flex items-center justify-center rounded-xl transition-colors ${
             input.trim() && !isTyping
               ? 'bg-[#E5793B] text-white hover:bg-[#D4692B]'
-              : 'bg-grey-050 text-grey-300'
+              : 'bg-gray-50 text-gray-400'
           }`}
         >
           <Send size={14} />

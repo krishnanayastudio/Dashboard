@@ -13,31 +13,31 @@ interface JourneyStepperProps {
 }
 
 const statusIcon = {
-  passed: <CheckCircle2 size={14} className="text-emerald-500" />,
-  active: <Shield size={14} className="text-amber-500" />,
+  passed: <CheckCircle2 size={14} className="text-green-500" />,
+  active: <Shield size={14} className="text-orange-300" />,
   blocked: <AlertCircle size={14} className="text-red-500" />,
-  locked: <Lock size={12} className="text-grey-300" />,
+  locked: <Lock size={12} className="text-gray-400" />,
 };
 
 const statusText = {
-  passed: 'text-emerald-700',
-  active: 'text-amber-700',
+  passed: 'text-green-500',
+  active: 'text-gray-800',
   blocked: 'text-red-700',
-  locked: 'text-grey-300',
+  locked: 'text-gray-400',
 };
 
 const statusBg = {
-  passed: 'bg-emerald-50',
-  active: 'bg-amber-50',
+  passed: 'bg-green-50',
+  active: 'bg-orange-50',
   blocked: 'bg-red-50',
-  locked: 'bg-grey-050',
+  locked: 'bg-gray-50',
 };
 
 const lineColor = {
-  passed: 'bg-emerald-300',
-  active: 'bg-amber-300',
-  blocked: 'bg-red-300',
-  locked: 'bg-grey-200',
+  passed: 'bg-green-300',
+  active: 'bg-orange-300',
+  blocked: 'bg-red-200',
+  locked: 'bg-gray-300',
 };
 
 export function JourneyStepper({
@@ -80,7 +80,7 @@ export function JourneyStepper({
   };
 
   return (
-    <div className="flex items-center gap-0 px-6 py-3 border-b border-grey-080 bg-white overflow-x-auto shrink-0">
+    <div className="flex items-center gap-0 px-6 py-3 border-b border-gray-100 bg-white overflow-x-auto shrink-0">
       {gates.map((gate, i) => {
         const status = gateStatusMap.get(gate.id) ?? 'locked';
         const isSelected = gate.id === activeGateId;
@@ -96,7 +96,7 @@ export function JourneyStepper({
                 setContextMenu({ gateId: gate.id, x: e.clientX, y: e.clientY });
               }}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all
-                ${isSelected ? 'ring-2 ring-primary-500/30' : ''}
+                ${isSelected ? 'ring-2 ring-purple-700/30' : ''}
                 ${statusBg[status]} hover:shadow-sm
               `}
             >
@@ -112,7 +112,7 @@ export function JourneyStepper({
                     if (e.key === 'Escape') setRenamingId(null);
                   }}
                   onClick={(e) => e.stopPropagation()}
-                  className="text-xs font-medium text-grey-700 bg-white border border-primary-500 rounded px-1.5 py-0.5 outline-none w-28"
+                  className="text-xs font-medium text-gray-900 bg-white border border-purple-700 rounded px-1.5 py-0.5 outline-none w-28"
                 />
               ) : (
                 <span className={`text-xs font-semibold whitespace-nowrap ${statusText[status]}`}>
@@ -120,7 +120,7 @@ export function JourneyStepper({
                 </span>
               )}
               {status === 'active' && gate.criteria.length > 0 && (
-                <span className="text-[10px] font-semibold tabular-nums px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700">
+                <span className="text-[10px] font-semibold tabular-nums px-1.5 py-0.5 rounded-full bg-orange-100 text-gray-800">
                   {gate.criteria.filter(c => c.completed).length}/{gate.criteria.length}
                 </span>
               )}
@@ -132,7 +132,7 @@ export function JourneyStepper({
       <div className="flex items-center shrink-0 ml-2">
         <button
           onClick={onAddGate}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-grey-300 hover:text-primary-500 hover:bg-primary-100 border border-dashed border-grey-200 hover:border-primary-500/30 transition-all"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-400 hover:text-purple-700 hover:bg-purple-150 border border-dashed border-gray-300 hover:border-purple-700/30 transition-all"
         >
           <Plus size={14} />
           Add gate
@@ -146,7 +146,7 @@ export function JourneyStepper({
         return (
           <div
             ref={menuRef}
-            className="fixed z-50 w-48 bg-white border border-grey-080 rounded-xl shadow-lg py-1"
+            className="fixed z-50 w-48 bg-white border border-gray-100 rounded-xl shadow-lg py-1"
             style={{ left: contextMenu.x, top: contextMenu.y }}
           >
             <button
@@ -155,14 +155,14 @@ export function JourneyStepper({
                 setRenamingId(gate.id);
                 setContextMenu(null);
               }}
-              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-grey-700 hover:bg-grey-050 transition-colors"
+              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-gray-900 hover:bg-gray-50 transition-colors"
             >
-              <Edit3 size={14} className="text-grey-500" /> Rename gate
+              <Edit3 size={14} className="text-gray-700" /> Rename gate
             </button>
-            <div className="border-t border-grey-080 my-1" />
+            <div className="border-t border-gray-100 my-1" />
             <button
               onClick={() => { onDeleteGate(gate.id); setContextMenu(null); }}
-              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+              className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-700 hover:bg-red-50 transition-colors"
             >
               <Trash2 size={14} className="text-red-400" /> Delete gate
             </button>
