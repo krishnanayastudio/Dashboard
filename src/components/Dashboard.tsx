@@ -56,7 +56,7 @@ const cardVariants = {
   hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1, y: 0,
-    transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
@@ -174,7 +174,7 @@ export function Dashboard({ project, activity, onClose }: DashboardProps) {
       initial={{ opacity: 0, y: 12, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 8, scale: 0.98 }}
-      transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] as const }}
       className="w-[780px] max-w-[90vw] max-h-[calc(100vh-48px)] bg-white border border-gray-100 rounded-3xl flex flex-col shrink-0 shadow-xl overflow-hidden"
     >
       {/* Header — white, just title + project name */}
@@ -321,7 +321,7 @@ export function Dashboard({ project, activity, onClose }: DashboardProps) {
                     key={member.name}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.06 + mi * 0.05, duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    transition={{ delay: 0.06 + mi * 0.05, duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as const }}
                     className="bg-white border border-gray-100 rounded-3xl p-4"
                   >
                     {/* Person header */}

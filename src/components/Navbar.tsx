@@ -7,7 +7,7 @@ interface NavbarProps {
   dashboardOpen: boolean;
 }
 
-export function Navbar({ projectName, activityCount, onDashboardToggle, dashboardOpen }: NavbarProps) {
+export function Navbar({ projectName, activityCount: _activityCount, onDashboardToggle, dashboardOpen }: NavbarProps) {
   return (
     <header className="flex items-center justify-between h-14 px-4 border-b border-gray-100 bg-white shrink-0">
       {/* Left */}
